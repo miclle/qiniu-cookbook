@@ -1,0 +1,29 @@
+# opencode CLI sandbox template
+#
+# 构建（首次 / 后续幂等重建）：
+#   cd examples/sandbox_agent_templates/opencode
+#   qshell sandbox template build --wait
+#
+# 模板按 name 定位（环境内全局唯一），qshell 会在 build 时按 name 自动 find-or-create。
+# 建议使用最新版 qshell。
+#
+# 使用（Python）：
+#   from e2b import Sandbox
+#   sbx = Sandbox("opencode", envs={
+#       "ANTHROPIC_API_KEY": "sk-ant-...",
+#       # 或 "OPENAI_API_KEY": "sk-...",
+#       # 或 "GEMINI_API_KEY": "...",
+#   })
+#   sbx.commands.run("opencode run 'write a hello world in python'")
+#
+# 使用（JS）：
+#   import { Sandbox } from 'e2b'
+#   const sbx = await Sandbox.create('opencode', {
+#     envs: { ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY },
+#   })
+
+name          = "opencode"
+dockerfile    = "Dockerfile"
+from_template = "agents-base"
+cpu_count     = 2
+memory_mb     = 2048
