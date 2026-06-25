@@ -1,0 +1,18 @@
+# Shared base sandbox template for AI agent templates
+#
+# 构建（首次 / 后续幂等重建）：
+#   cd examples/sandbox_agent_templates/agents-base
+#   qshell sandbox template build --wait
+#
+# 子模板（claude / codex / amp / opencode）通过 from_template = "agents-base"
+# 继承该模板。请先构建并发布 agents-base，再构建子模板。
+#
+# 模板按 name 定位（环境内全局唯一），无需写 template_id；
+# qshell 会在 build 时按 name 自动 find-or-create，配置可跨环境复用。
+# 建议使用最新版 qshell。
+
+name          = "agents-base"
+dockerfile    = "Dockerfile"
+from_template = "base"
+cpu_count     = 4
+memory_mb     = 8192
